@@ -8,7 +8,7 @@
       
       <!-- grafics -->
       <div class="w-full h-80 bg-blue-200">
-        <votes-count votes="13000"></votes-count>
+        <votes-count :votes="13000"></votes-count>
       </div>
 
       <base-button :text="'Compartilhar Zap'"></base-button>

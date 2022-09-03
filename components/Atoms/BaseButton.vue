@@ -1,7 +1,7 @@
 
 <template>
   <button :type="buttonType"
-    @click="navigate"
+    @click="submit"
     class="base-button bg-green-400 py-4 w-full rounded-full hover:bg-green-500"
   >
     <span class="text-white">{{ text }}</span>
@@ -26,13 +26,8 @@ export default {
     }
   },
   methods: {
-    navigate() {
-      console.log("aqui: "+this.to);
-      if (this.to) {
-        this.$router.push({
-          path: this.to,
-        })
-      }
+    submit() {
+      this.$emit('submit');
     },
   },
 }

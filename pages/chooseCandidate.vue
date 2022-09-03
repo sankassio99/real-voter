@@ -1,11 +1,11 @@
 <template>
   <div class="container mx-auto h-screen px-4">
-    <div class="flex flex-col gap-10 h-screen justify-center px-4">
+    <div class="flex flex-col gap-10 h-screen justify-center px-4 lg:items-center">
       <header-text
         text="Escolha seu candidato"
         subtitle="Selecione o candidato que terá seu voto"
       ></header-text>
-      <list-candidates :candidates="candidates" class="w-full"></list-candidates>
+      <list-candidates @submitVote="submitVote" :candidates="candidates" class="w-full"></list-candidates>
     </div>
   </div>
 </template>
@@ -23,6 +23,11 @@ export default {
       ],
     }
   },
+  methods:{
+    submitVote(number){
+      console.log(number);
+    }
+  }
 }
 </script>
 
