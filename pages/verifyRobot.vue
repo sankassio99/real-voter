@@ -1,11 +1,12 @@
 <template>
   <div class="container mx-auto h-screen">
     <div class="flex flex-col gap-20 h-screen justify-center px-4">
-      <header-text></header-text>
+      <header-text
+        text="Confirme que seu voto é real"
+        subtitle="Dessa forma garantimos a veraciade do seu voto"
+      ></header-text>
       <!-- reCpacthar here -->
-      <div class="h-20 w-full bg-gray-400">
-
-      </div>
+      <div class="h-20 w-full bg-gray-400"></div>
       <base-button class="max-w-lg" :text="'Votar agora'"></base-button>
     </div>
   </div>

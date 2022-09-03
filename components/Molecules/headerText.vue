@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-2">
-    <title-xl :text="'Confirme que seu voto é real'"></title-xl>
-    <p class="">Dessa forma garantimos a veraciade do seu voto</p>
+    <title-xl :text="text"></title-xl>
+    <p class="">{{subtitle}}</p>
   </div>
 </template>
 
@@ -9,10 +9,17 @@
 import TitleXl from '../Atoms/TitleXl.vue'
 export default {
   components: { TitleXl },
-
+  props: {
+    text: {
+      type: String,
+      required: true,
+    },
+    subtitle: {
+      type: String,
+      required: true,
+    },
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
