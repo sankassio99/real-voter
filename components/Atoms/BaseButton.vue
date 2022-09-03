@@ -2,7 +2,7 @@
 <template>
   <button :type="buttonType"
     @click="navigate"
-    class="base-button bg-green-400 py-2 w-full rounded-full hover:bg-green-500"
+    class="base-button bg-green-400 py-4 w-full rounded-full hover:bg-green-500"
   >
     <span class="text-white">{{ text }}</span>
   </button>
