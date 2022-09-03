@@ -1,11 +1,17 @@
 <template>
   <div class="container mx-auto h-screen px-4">
-    <div class="flex flex-col gap-10 h-screen justify-center px-4 lg:items-center">
+    <div
+      class="flex flex-col gap-10 h-screen justify-center px-4 lg:items-center"
+    >
       <header-text
         text="Escolha seu candidato"
         subtitle="Selecione o candidato que terá seu voto"
       ></header-text>
-      <list-candidates @submitVote="submitVote" :candidates="candidates" class="w-full"></list-candidates>
+      <list-candidates
+        @submitVote="submitVote"
+        :candidates="candidates"
+        class="w-full"
+      ></list-candidates>
     </div>
   </div>
 </template>
@@ -13,6 +19,8 @@
 <script>
 import headerText from '~/components/Molecules/headerText.vue'
 import ListCandidates from '~/components/Molecules/listCandidates.vue'
+import {store} from "vuex";
+
 export default {
   components: { headerText, ListCandidates },
   data() {
@@ -23,11 +31,16 @@ export default {
       ],
     }
   },
-  methods:{
-    submitVote(number){
-      console.log(number);
-    }
-  }
+  methods: {
+    submitVote(number) {
+      const candidate = this.candidates.find(
+        (candidate) => candidate.number == number
+      )
+      console.log(candidate)
+
+      this.$store.commit('registerVote', candidate);
+    },
+  },
 }
 </script>
 

@@ -34,7 +34,24 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/firebase',
   ],
+
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyAJFBlLGtRwbQtAAl9XGhh-KqGPXOKuocM',
+      authDomain: 'real-voter.firebaseapp.com',
+      projectId: 'real-voter',
+      storageBucket: 'real-voter.appspot.com',
+      messagingSenderId: '411061275486',
+      appId: '1:411061275486:web:1e40e81dc0c3efdff09dcf',
+      measurementId: 'G-Y7SRC73R4D'
+    },
+    services: {
+      auth: true, // Just as example. Can be any other service.
+      firestore: true,
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
