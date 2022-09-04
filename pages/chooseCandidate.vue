@@ -19,26 +19,30 @@
 <script>
 import headerText from '~/components/Molecules/headerText.vue'
 import ListCandidates from '~/components/Molecules/listCandidates.vue'
-import {store} from "vuex";
 
 export default {
   components: { headerText, ListCandidates },
   data() {
     return {
       candidates: [
-        { name: 'Bolsonaro', number: 17 },
-        { name: 'Lula', number: 13 },
+        { name: 'Bolsonaro (PL)', number: 17 },
+        { name: 'Lula (PT)', number: 13 },
+        { name: 'Ciro Gomes (PDT)', number: 12 },
+        { name: 'Simone Tebet (MDB)', number: 15 },
+        { name: 'Leonardo Péricles (UP)', number: 80 },
+        { name: 'Luiz Felipe d\'Avila (Novo)', number: 30 },
       ],
     }
+  },
+  mounted() {
   },
   methods: {
     submitVote(number) {
       const candidate = this.candidates.find(
         (candidate) => candidate.number == number
       )
-      console.log(candidate)
 
-      this.$store.commit('registerVote', candidate);
+      this.$store.commit('registerVote', candidate)
     },
   },
 }

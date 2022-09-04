@@ -5,7 +5,13 @@ export default {
   extends: Bar,
   props: ['data', 'options'],
   mounted() {
-    this.renderChart(this.data, this.options)
+    setTimeout(()=>{
+      this.renderChart(this.data, this.options)
+    }, 500);
   },
+  methods:{
+    updateChart(){
+    }
+  }
 }
 </script>

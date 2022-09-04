@@ -10,6 +10,7 @@
       <div class="max-w-xl">
         <!-- <votes-count :votes="13000"></votes-count> -->
         <bar-chart
+          ref="bar"
           :data="barChartData"
           :options="barChartOptions"
           :height="400"
@@ -35,16 +36,7 @@ export default {
   components: { headerText, BaseButton, VotesCount, BarChart },
   data() {
     return {
-      barChartData: {
-        labels: ['Bolsonaro', 'Lula', 'Moro', 'Ciro', 'Junior'],
-        datasets: [
-          {
-            label: 'Votos',
-            data: [19000, 17000, 6000, 3000],
-            backgroundColor: 'blue',
-          },
-        ],
-      },
+      barChartData: null,
       barChartOptions: {
         responsive: true,
         legend: {
@@ -71,9 +63,9 @@ export default {
             {
               ticks: {
                 beginAtZero: true,
-                max: 40000,
+                max: 20,
                 min: 0,
-                stepSize: 10000,
+                stepSize: 5,
               },
               gridLines: {
                 display: true,
@@ -82,7 +74,57 @@ export default {
           ],
         },
       },
+      documents: [],
     }
+  },
+  mounted() {
+    let bolsonaro = 0;
+    this.documents.forEach((element) => element.number == 17 ? bolsonaro += 1 : bolsonaro += 0);
+
+    let lula = 0;
+    this.documents.forEach((element) => element.number == 13 ? lula += 1 : lula += 0);
+
+    let ciro = 0;
+    this.documents.forEach((element) => element.number == 12 ? ciro += 1 : ciro += 0);
+
+    let simone = 0;
+    this.documents.forEach((element) => element.number == 15 ? simone += 1 : simone += 0);
+
+    let leo = 0;
+    this.documents.forEach((element) => element.number == 80 ? leo += 1 : leo += 0);
+
+    let luiz = 0;
+    this.documents.forEach((element) => element.number == 30 ? luiz += 1 : luiz += 0);
+
+    this.barChartData = {
+      labels: ['Bolsonaro', 'Lula', 'Ciro', 'Simone', 'Leonardo', 'Luiz Feipe'],
+      datasets: [
+        {
+          label: 'Votos',
+          data: [bolsonaro, lula, ciro, simone, leo, luiz],
+          backgroundColor: 'blue',
+        },
+      ],
+    }
+  },
+  async asyncData({ $fire }) {
+    let allDocs = []
+    await $fire.firestore
+      .collection('real-voter')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          allDocs.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        })
+      })
+
+    return { documents: allDocs }
+  },
+  methods: {
+    async getAllDocuments() {},
   },
 }
 </script>
