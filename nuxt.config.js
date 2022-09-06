@@ -35,6 +35,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/firebase',
+    '@nuxtjs/recaptcha'
   ],
 
   firebase: {
@@ -50,6 +51,22 @@ export default {
     services: {
       auth: true, // Just as example. Can be any other service.
       firestore: true,
+    }
+  },
+
+  recaptcha: {
+    // hideBadge: Boolean, // Hide badge element (v3 & v2 via size=invisible)
+    // language: String,   // Recaptcha language (v2)
+    mode: "enterprise",       // Mode: 'base', 'enterprise'
+    siteKey: '6LfCV9UhAAAAAGGxTt-7lyhy8nncerPMSn9my2z-',    // Site key for requests
+    version: 2,    // Version
+    size: "normal"        // Size: 'compact', 'normal', 'invisible' (v2)
+  },
+
+  publicRuntimeConfig: {
+    recaptcha: {
+      /* reCAPTCHA options */
+      siteKey: '6LfCV9UhAAAAAGGxTt-7lyhy8nncerPMSn9my2z-'// for example
     }
   },
 
