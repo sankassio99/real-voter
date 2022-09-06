@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 my-10">
     <div class="flex flex-col gap-10 justify-center px-4">
       <header-text
         :text="'Resultado das pesquisas em tempo real'"
@@ -32,8 +32,11 @@ import BaseButton from '~/components/Atoms/BaseButton.vue'
 import VotesCount from '~/components/Atoms/votesCount.vue'
 import headerText from '~/components/Molecules/headerText.vue'
 import BarChart from '~/components/Organims/BarChart.vue'
+import firebase_service from '~/mixins/firebase_service.js'
+
 export default {
   components: { headerText, BaseButton, VotesCount, BarChart },
+  mixins: [firebase_service],
   data() {
     return {
       barChartData: null,
@@ -77,54 +80,30 @@ export default {
       documents: [],
     }
   },
-  mounted() {
-    let bolsonaro = 0;
-    this.documents.forEach((element) => element.number == 17 ? bolsonaro += 1 : bolsonaro += 0);
+  async mounted() {
 
-    let lula = 0;
-    this.documents.forEach((element) => element.number == 13 ? lula += 1 : lula += 0);
-
-    let ciro = 0;
-    this.documents.forEach((element) => element.number == 12 ? ciro += 1 : ciro += 0);
-
-    let simone = 0;
-    this.documents.forEach((element) => element.number == 15 ? simone += 1 : simone += 0);
-
-    let leo = 0;
-    this.documents.forEach((element) => element.number == 80 ? leo += 1 : leo += 0);
-
-    let luiz = 0;
-    this.documents.forEach((element) => element.number == 30 ? luiz += 1 : luiz += 0);
-
+    let allDocs = await this.getAllDocs();
+    let labels =  [];
+    let values = [];
+    allDocs.forEach((doc) => {
+      labels.push(doc.id);
+    })
+    allDocs.forEach(async (doc) => {
+        let data = await this.getCadidateVotes(doc.id);
+        values.push(data);
+    })
     this.barChartData = {
-      labels: ['Bolsonaro', 'Lula', 'Ciro', 'Simone', 'Leonardo', 'Luiz Feipe'],
+      labels: labels,
       datasets: [
         {
           label: 'Votos',
-          data: [bolsonaro, lula, ciro, simone, leo, luiz],
+          data: values,
           backgroundColor: 'blue',
         },
       ],
     }
   },
-  async asyncData({ $fire }) {
-    let allDocs = []
-    await $fire.firestore
-      .collection('real-voter')
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          allDocs.push({
-            id: doc.id,
-            ...doc.data(),
-          })
-        })
-      })
-
-    return { documents: allDocs }
-  },
   methods: {
-    async getAllDocuments() {},
   },
 }
 </script>

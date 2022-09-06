@@ -19,18 +19,20 @@
 <script>
 import headerText from '~/components/Molecules/headerText.vue'
 import ListCandidates from '~/components/Molecules/listCandidates.vue'
+import firebase_service from '~/mixins/firebase_service.js'
 
 export default {
   components: { headerText, ListCandidates },
+  mixins: [firebase_service],
   data() {
     return {
       candidates: [
-        { name: 'Bolsonaro (PL)', number: 17 },
-        { name: 'Lula (PT)', number: 13 },
-        { name: 'Ciro Gomes (PDT)', number: 12 },
-        { name: 'Simone Tebet (MDB)', number: 15 },
-        { name: 'Leonardo Péricles (UP)', number: 80 },
-        { name: 'Luiz Felipe d\'Avila (Novo)', number: 30 },
+        { id: "bolsonaro", name: 'Bolsonaro (PL)', number: 17 },
+        { id: "lula", name: 'Lula (PT)', number: 13 },
+        { id: "ciro", name: 'Ciro Gomes (PDT)', number: 12 },
+        { id: "simone", name: 'Simone Tebet (MDB)', number: 15 },
+        { id: "leonardo", name: 'Leonardo Péricles (UP)', number: 80 },
+        { id: "luiz", name: 'Luiz Felipe d\'Avila (Novo)', number: 30 },
       ],
     }
   },
@@ -42,7 +44,7 @@ export default {
         (candidate) => candidate.number == number
       )
 
-      this.$store.commit('registerVote', candidate)
+      this.registerVote(candidate.id);
     },
   },
 }
