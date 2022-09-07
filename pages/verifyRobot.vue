@@ -1,15 +1,18 @@
 <template>
   <div class="container mx-auto h-screen">
     <div class="flex flex-col gap-20 h-screen justify-center items-center px-4">
-      <header-text
-        text="Confirme que seu voto é real"
-        subtitle="Dessa forma garantimos a veraciade do seu voto"
-      ></header-text>
+      <div class="flex flex-col justify-center items-center">
+        <img src="logo.png" width="64" />
+        <header-text
+          text="Confirme que seu voto é real"
+          subtitle="Dessa forma garantimos a veraciade do seu voto"
+        ></header-text>
+      </div>
       <!-- todo: tem que virar um organims -->
       <div class="h-20 w-full flex flex-col justify-center items-center">
         <div
           class="border rounded-md flex p-10 gap-4 justify-center items-center"
-          :class="error?'border-2 border-red-400':''"
+          :class="error ? 'border-2 border-red-400' : ''"
         >
           <input
             v-if="!verified"
