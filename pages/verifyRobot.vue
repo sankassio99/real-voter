@@ -5,9 +5,11 @@
         text="Confirme que seu voto é real"
         subtitle="Dessa forma garantimos a veraciade do seu voto"
       ></header-text>
-      <div class="h-20 w-full flex justify-center items-center">
+      <!-- todo: tem que virar um organims -->
+      <div class="h-20 w-full flex flex-col justify-center items-center">
         <div
-          class="border rounded-sm flex p-10 gap-4 justify-center items-center"
+          class="border rounded-md flex p-10 gap-4 justify-center items-center"
+          :class="error?'border-2 border-red-400':''"
         >
           <input
             v-if="!verified"
@@ -25,14 +27,18 @@
           <img v-else-if="!loading" src="check.png" width="30" />
           <span class="font-bold text-gray-600">Eu não sou um robô</span>
         </div>
+        <span class="text-red-400 text-sm font-semibold">{{ error }}</span>
       </div>
       <div class="flex flex-col gap-2 w-full justify-center items-center">
-        <span class="text-red-400">{{ error }}</span>
         <base-button
           @submit="submit"
           class="max-w-lg"
           :text="'Votar agora'"
         ></base-button>
+        <link-text
+          :text="'Já votou? Navegar para resultado'"
+          :to="'/results'"
+        ></link-text>
       </div>
     </div>
   </div>
@@ -41,8 +47,10 @@
 <script>
 import BaseButton from '~/components/Atoms/BaseButton.vue'
 import HeaderText from '~/components/Molecules/headerText.vue'
+import LinkText from '~/components/Atoms/LinkText.vue'
+
 export default {
-  components: { BaseButton, HeaderText },
+  components: { BaseButton, HeaderText, LinkText },
   async mounted() {
     try {
       await this.$recaptcha.init()

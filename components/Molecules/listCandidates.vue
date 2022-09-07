@@ -28,9 +28,6 @@ export default {
   methods: {
     submitVote(number) {
       this.$emit('submitVote', number);
-      this.$router.push({
-        path: '/results',
-      })
     },
   },
 }

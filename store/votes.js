@@ -1,18 +1,39 @@
+var aguid = require('aguid')
+
 export const state = () => ({
-  list: [],
+  candidates: null,
 })
 
+export const getters = {
+  getVotes(state) {
+    try {
+      console.log('auqi')
+      state.candidates = this.$fire.firestore.collection('real-voter')
+    } catch (err) {
+      console.log(err)
+    }
+  },
+}
+
 export const mutations = {
-  add(state, text) {
-    state.list.push({
-      text,
-      done: false,
-    })
+  async registerVote({ commit, state, rootState }, candidate) {
+    try {
+      this.$fire.firestore.collection('real-voter').doc(aguid()).set({
+        name: candidate.name,
+        number: candidate.number,
+      })
+    } catch (err) {
+      console.log(err)
+    }
   },
-  remove(state, { todo }) {
-    state.list.splice(state.list.indexOf(todo), 1)
-  },
-  toggle(state, todo) {
-    todo.done = !todo.done
+}
+
+export const actions = {
+  async getVotes({ state }) {
+    try {
+      state.candidates = this.$fire.firestore.collection('real-voter').get()
+    } catch (err) {
+      console.log(err)
+    }
   },
 }

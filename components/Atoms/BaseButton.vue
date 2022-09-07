@@ -4,7 +4,7 @@
     @click="submit"
     class="base-button bg-green-400 py-4 w-full rounded-full hover:bg-green-500"
   >
-    <span class="text-white">{{ text }}</span>
+    <span class="text-white font-semibold">{{ text }}</span>
   </button>
 </template>
 
