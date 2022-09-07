@@ -66,9 +66,9 @@ export default {
             {
               ticks: {
                 beginAtZero: true,
-                max: 20,
+                max: 100,
                 min: 0,
-                stepSize: 5,
+                stepSize: 20,
               },
               gridLines: {
                 display: true,
