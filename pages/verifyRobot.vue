@@ -2,7 +2,7 @@
   <div class="container mx-auto h-screen">
     <div class="flex flex-col gap-20 h-screen justify-center items-center px-4">
       <div class="flex flex-col justify-center items-center">
-        <img src="logo.png" width="64" />
+        <logo-main></logo-main>
         <header-text
           text="Confirme que seu voto é real"
           subtitle="Dessa forma garantimos a veraciade do seu voto"
@@ -51,9 +51,10 @@
 import BaseButton from '~/components/Atoms/BaseButton.vue'
 import HeaderText from '~/components/Molecules/headerText.vue'
 import LinkText from '~/components/Atoms/LinkText.vue'
+import LogoMain from '~/components/Molecules/logoMain.vue'
 
 export default {
-  components: { BaseButton, HeaderText, LinkText },
+  components: { BaseButton, HeaderText, LinkText, LogoMain },
   async mounted() {
     try {
       await this.$recaptcha.init()

@@ -1,9 +1,22 @@
 <template>
   <div
     @click="submit"
-    class="base-button bg-red-400 py-2 w-full flex items-center justify-center rounded-full hover:bg-red-500 p-10 cursor-pointer"
+    class="
+      base-button
+      border-2
+      bg-red-400
+      py-4
+      w-full
+      flex
+      items-center
+      justify-center
+      rounded-full
+      hover:bg-red-300
+      p-10
+      cursor-pointer
+    "
   >
-    <p class="text-lg">{{ name }} {{ number }}</p>
+    <p class="text-lg font-semibold">{{ name }} {{ number }}</p>
   </div>
 </template>
 
@@ -27,4 +40,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+</style>

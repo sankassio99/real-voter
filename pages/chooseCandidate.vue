@@ -14,7 +14,7 @@
         class="w-full"
       ></list-candidates>
     </div>
-    <div v-else class="my-20 flex flex-col justify-center items-center gap-4">
+    <div v-else class="my-30 flex flex-col justify-center items-center gap-4">
       <title-lg :text="'Seu voto já foi registrado'"></title-lg>
       <img src="check.png" width="30" />
       <link-text :text="'Navegar para resultado'" :to="'/results'"></link-text>

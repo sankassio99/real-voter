@@ -7,7 +7,7 @@ export default {
   mounted() {
     setTimeout(()=>{
       this.renderChart(this.data, this.options)
-    }, 500);
+    }, 1000);
   },
   methods:{
     updateChart(){

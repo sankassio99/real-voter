@@ -1,27 +1,25 @@
 <template>
-  <div class="container mx-auto px-4 my-10">
+  <div class="max-w-xl mx-auto px-4 my-10">
     <div class="flex flex-col gap-10 justify-center px-4">
       <header-text
-        :text="'Resultado das pesquisas em tempo real'"
-        :subtitle="'Tecnologia que mostra em tempo real como está indo so votos'"
+        :text="'Resultado da pesquisa em tempo real'"
+        :subtitle="'Tecnologia que mostra em tempo real como está indo a contagem dos votos'"
       ></header-text>
 
-      <!-- grafics -->
       <div class="max-w-xl">
-        <!-- <votes-count :votes="13000"></votes-count> -->
         <bar-chart
-          ref="bar"
+          ref="bar" 
           :data="barChartData"
           :options="barChartOptions"
           :height="400"
         />
       </div>
 
-      <div>
+      <div class="w-full flex flex-col justify-center items-center gap-2">
         <p class="text-center">
           Compartilhe para alcançarmos o maior número de pessoas
         </p>
-        <base-button :text="'Compartilhar Zap'"></base-button>
+        <button-zap></button-zap>
       </div>
     </div>
   </div>
@@ -30,12 +28,13 @@
 <script>
 import BaseButton from '~/components/Atoms/BaseButton.vue'
 import VotesCount from '~/components/Atoms/votesCount.vue'
+import ButtonZap from '~/components/Molecules/buttonZap.vue'
 import headerText from '~/components/Molecules/headerText.vue'
 import BarChart from '~/components/Organims/BarChart.vue'
 import firebase_service from '~/mixins/firebase_service.js'
 
 export default {
-  components: { headerText, BaseButton, VotesCount, BarChart },
+  components: { headerText, BaseButton, VotesCount, BarChart, ButtonZap },
   mixins: [firebase_service],
   data() {
     return {

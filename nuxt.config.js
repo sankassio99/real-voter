@@ -26,6 +26,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,6 +52,19 @@ export default {
     services: {
       auth: true, // Just as example. Can be any other service.
       firestore: true,
+    }
+  },
+
+  googleFonts: {
+    text: 'Hello world',
+    families: {
+      DMSans: true,
+      'Josefin+Sans': true,
+      Lato: [100, 300],
+      Raleway: {
+        wght: [100, 400],
+        ital: [100]
+      },
     }
   },
 
