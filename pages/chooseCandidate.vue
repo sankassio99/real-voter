@@ -1,6 +1,7 @@
 <template>
   <div class="container mx-auto h-screen px-4">
-    <div v-if="!isVoted"
+    <div
+      v-if="!isVoted"
       class="flex flex-col gap-10 h-screen justify-center px-4 lg:items-center"
     >
       <header-text
@@ -31,26 +32,35 @@ import LinkText from '~/components/Atoms/LinkText.vue'
 export default {
   components: { headerText, ListCandidates, TitleLg, LinkText },
   mixins: [firebase_service],
+  async asyncData({ $fire }) {
+    let allCandidates = [];
+    await $fire.firestore
+      .collection('candidates')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          allCandidates.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        })
+      })
+
+    return {candidates: allCandidates}
+  },
   data() {
     return {
-      candidates: [
-        { id: "bolsonaro", name: 'Bolsonaro (PL)', number: 17 },
-        { id: "lula", name: 'Lula (PT)', number: 13 },
-        { id: "ciro", name: 'Ciro Gomes (PDT)', number: 12 },
-        { id: "simone", name: 'Simone Tebet (MDB)', number: 15 },
-        { id: "leonardo", name: 'Leonardo Péricles (UP)', number: 80 },
-        { id: "luiz", name: 'Luiz Felipe d\'Avila (Novo)', number: 30 },
-      ],
+      candidates: [],
       isVoted: false,
     }
   },
   async created() {
-    this.isVoted = await this.$store.dispatch("fetchVote");
+    this.isVoted = await this.$store.dispatch('fetchVote')
   },
   computed: {
-    voted () {
+    voted() {
       return this.$store.state.voted
-    }
+    },
   },
   methods: {
     submitVote(number) {
@@ -58,8 +68,8 @@ export default {
         (candidate) => candidate.number == number
       )
 
-      this.registerVote(candidate.id);
-      this.$store.commit("vote", true);
+      this.registerVote(candidate.id)
+      this.$store.commit('vote', true)
 
       this.$router.push({
         path: '/results',
