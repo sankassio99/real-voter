@@ -95,6 +95,11 @@ export default {
       }
     },
   },
+  head() {
+    return {
+      title: "Real Eleitor",
+    }
+  },
 }
 </script>
 

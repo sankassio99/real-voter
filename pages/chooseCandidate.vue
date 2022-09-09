@@ -33,7 +33,7 @@ export default {
   components: { headerText, ListCandidates, TitleLg, LinkText },
   mixins: [firebase_service],
   async asyncData({ $fire }) {
-    let allCandidates = [];
+    let allCandidates = []
     await $fire.firestore
       .collection('candidates')
       .get()
@@ -46,7 +46,7 @@ export default {
         })
       })
 
-    return {candidates: allCandidates}
+    return { candidates: allCandidates }
   },
   data() {
     return {
@@ -75,6 +75,11 @@ export default {
         path: '/results',
       })
     },
+  },
+  head() {
+    return {
+      title: "Real Eleitor",
+    }
   },
 }
 </script>

@@ -104,6 +104,11 @@ export default {
   },
   methods: {
   },
+  head() {
+    return {
+      title: "Real Eleitor",
+    }
+  },
 }
 </script>
 

@@ -9,5 +9,10 @@ import verifyRobot from './verifyRobot.vue'
 export default Vue.extend({
   components: { verifyRobot },
   name: 'IndexPage',
+  head() {
+    return {
+      title: "Real Eleitor",
+    }
+  },
 })
 </script>
