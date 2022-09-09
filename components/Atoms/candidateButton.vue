@@ -3,20 +3,21 @@
     @click="submit"
     class="
       base-button
-      border-2
-      bg-red-400
       py-4
       w-full
       flex
       items-center
       justify-center
+      border
       rounded-full
+      bg-red-400
       hover:bg-red-300
       p-10
       cursor-pointer
+      shadow-sm
     "
   >
-    <p class="text-lg font-semibold">{{ name }} {{ number }}</p>
+    <p class="font-semibold text-gray-600">{{ name }} {{ number }}</p>
   </div>
 </template>
 

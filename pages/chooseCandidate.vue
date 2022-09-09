@@ -1,8 +1,8 @@
 <template>
-  <div class="container mx-auto h-screen px-4">
+  <div class="container mx-auto my-10 px-4">
     <div
       v-if="!isVoted"
-      class="flex flex-col gap-10 h-screen justify-center px-4 lg:items-center"
+      class="flex flex-col gap-10 justify-center px-4 lg:items-center"
     >
       <header-text
         text="Escolha seu candidato"
