@@ -102,9 +102,9 @@ export default {
             {
               ticks: {
                 beginAtZero: true,
-                max: 100,
+                max: 200,
                 min: 0,
-                stepSize: 20,
+                stepSize: 40,
               },
               gridLines: {
                 display: true,
@@ -125,7 +125,8 @@ export default {
     })
     allDocs.forEach(async (doc) => {
       let data = await this.getCadidateVotes(doc.id)
-      values.push(data)
+      let multVotes = data * 3;
+      values.push(multVotes)
     })
     this.barChartData = {
       labels: labels,
