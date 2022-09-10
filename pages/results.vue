@@ -8,7 +8,7 @@
 
       <div class="max-w-xl">
         <bar-chart
-          ref="bar" 
+          ref="bar"
           :data="barChartData"
           :options="barChartOptions"
           :height="400"
@@ -40,6 +40,43 @@ export default {
     return {
       barChartData: null,
       barChartOptions: {
+        plugins: {
+          labels: {
+            render: 'image',
+            images: [
+              {
+                src: '/candidates/jair-bolsonaro.jpeg',
+                width: 35,
+                height: 35,
+              },
+              {
+                src: '/candidates/ciro-gomes-.jpeg',
+                width: 35,
+                height: 35,
+              },
+              {
+                src: '/candidates/felipe.jpeg',
+                width: 35,
+                height: 35,
+              },
+              {
+                src: '/candidates/lula-foto-tse.jpeg',
+                width: 35,
+                height: 35,
+              },
+              {
+                src: '/candidates/simone-tebet.jpeg',
+                width: 35,
+                height: 35,
+              },
+              {
+                src: '/candidates/soraya-thronicke-1.jpeg',
+                width: 35,
+                height: 35,
+              },
+            ],
+          },
+        },
         responsive: true,
         legend: {
           display: true,
@@ -80,16 +117,15 @@ export default {
     }
   },
   async mounted() {
-
-    let allDocs = await this.getAllDocs();
-    let labels =  [];
-    let values = [];
+    let allDocs = await this.getAllDocs()
+    let labels = []
+    let values = []
     allDocs.forEach((doc) => {
-      labels.push(doc.id);
+      labels.push(doc.id)
     })
     allDocs.forEach(async (doc) => {
-        let data = await this.getCadidateVotes(doc.id);
-        values.push(data);
+      let data = await this.getCadidateVotes(doc.id)
+      values.push(data)
     })
     this.barChartData = {
       labels: labels,
@@ -102,11 +138,10 @@ export default {
       ],
     }
   },
-  methods: {
-  },
+  methods: {},
   head() {
     return {
-      title: "Real Eleitor",
+      title: 'Real Eleitor',
     }
   },
 }

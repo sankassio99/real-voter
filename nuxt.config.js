@@ -28,6 +28,12 @@ export default {
       { rel: "icon" ,type: "image/png" ,sizes: "16x16" ,href: "/favicon-16x16.png"},
       { rel: "manifest",href: "/manifest.json"},
     ],
+    // script: [
+    //   {
+    //     type: "text/javascript",
+    //     src: "https://unpkg.com/chart.js-plugin-labels-dv@3.1.0/dist/chartjs-plugin-labels.min.js",
+    //   },
+    // ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
