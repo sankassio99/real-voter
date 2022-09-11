@@ -102,9 +102,9 @@ export default {
             {
               ticks: {
                 beginAtZero: true,
-                max: 200,
+                max: 360,
                 min: 0,
-                stepSize: 40,
+                stepSize: 72,
               },
               gridLines: {
                 display: true,
