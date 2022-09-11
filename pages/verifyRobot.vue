@@ -4,8 +4,8 @@
       <div class="flex flex-col justify-center items-center">
         <logo-main></logo-main>
         <header-text
-          text="Confirme que seu voto é real"
-          subtitle="Dessa forma garantimos a veraciade do seu voto"
+          text="Pesquisa popular para presidente 2022"
+          subtitle="Mostre sua intenção de voto de forma 100% anônima"
         ></header-text>
       </div>
       <!-- todo: tem que virar um organims -->
