@@ -1,6 +1,9 @@
 <template>
-  <div class="max-w-xl mx-auto px-4 my-10">
+  <div class="max-w-xl mx-auto px-2 my-10">
+    <sucess-alert v-if="successVote" :text="'Seu voto foi registrado com sucesso 🎉'"></sucess-alert>
+
     <div class="flex flex-col gap-10 justify-center px-4">
+      
       <header-text
         :text="'Resultado da pesquisa em tempo real'"
         :subtitle="'Tecnologia que mostra em tempo real como está indo a contagem dos votos'"
@@ -11,7 +14,6 @@
           v-if="dataIsGot"
           ref="bar"
           :data="barChartData"
-          :options="barChartOptions"
           :height="390"
           :totalOfVotes="totalVotes"
         />
@@ -39,16 +41,17 @@ import ButtonZap from '~/components/Molecules/buttonZap.vue'
 import headerText from '~/components/Molecules/headerText.vue'
 import BarChart from '~/components/Organims/BarChart.vue'
 import firebase_service from '~/mixins/firebase_service.js'
+import SucessAlert from '../components/Atoms/SuccessAlert.vue'
 
 export default {
-  components: { headerText, BaseButton, VotesCount, BarChart, ButtonZap },
+  components: { headerText, BaseButton, VotesCount, BarChart, ButtonZap, SucessAlert },
   mixins: [firebase_service],
   data() {
     return {
       barChartData: null,
       totalVotes: 0,
       dataIsGot: false,
-      documents: [],
+      successVote: false,
     }
   },
   computed: {},
@@ -84,6 +87,12 @@ export default {
     setTimeout(() => {
       this.dataIsGot = true
     }, 1000)
+  },
+  mounted(){
+    var res = this.$route.fullPath.split('?');
+    if(res[1]){
+      this.successVote = true;
+    }
   },
   methods: {
     // updateGraphc() {

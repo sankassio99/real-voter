@@ -72,7 +72,7 @@ export default {
       this.$store.commit('vote', true)
 
       this.$router.push({
-        path: '/results',
+        path: '/results?sucesso',
       })
     },
   },
