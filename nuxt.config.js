@@ -12,6 +12,7 @@ export default {
       { name: "theme-color" , content: "#ffffff"},
     ],
     link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
       { rel: "apple-touch-icon" ,sizes: "57x57" ,href: "/apple-icon-57x57.png"},
       { rel: "apple-touch-icon" ,sizes: "60x60" ,href: "/apple-icon-60x60.png"},
@@ -121,5 +122,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    publicPath: 'new-folder/',
+  },
 }
