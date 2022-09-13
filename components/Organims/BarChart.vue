@@ -70,9 +70,9 @@ export default {
           {
             ticks: {
               beginAtZero: true,
-              max: 360,
+              max: this.totalOfVotes,
               min: 0,
-              stepSize: 72,
+              stepSize: this.totalOfVotes / 5,
             },
             gridLines: {
               display: true,
