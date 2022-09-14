@@ -61,6 +61,10 @@ export default {
     } catch (e) {
       console.log(e)
     }
+
+    if (process.client) {
+      this.$fire.analytics.logEvent("page_view", {});
+    }
   },
   data() {
     return {
