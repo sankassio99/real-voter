@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -26,7 +28,8 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -36,18 +39,18 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/firebase',
-    '@nuxtjs/recaptcha'
+    '@nuxtjs/recaptcha',
   ],
 
   firebase: {
     config: {
-      apiKey: 'AIzaSyAJFBlLGtRwbQtAAl9XGhh-KqGPXOKuocM',
-      authDomain: 'real-voter.firebaseapp.com',
-      projectId: 'real-voter',
-      storageBucket: 'real-voter.appspot.com',
-      messagingSenderId: '411061275486',
-      appId: '1:411061275486:web:1e40e81dc0c3efdff09dcf',
-      measurementId: 'G-Y7SRC73R4D'
+      apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+      authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.VUE_APP_FIREBASE_APP_ID,
+      measurementId: process.env.VUE_APP_FIREBASE_MENSUREMENT_ID,
     },
     services: {
       auth: true, // Just as example. Can be any other service.
@@ -77,15 +80,15 @@ export default {
     // hideBadge: Boolean, // Hide badge element (v3 & v2 via size=invisible)
     // language: String,   // Recaptcha language (v2)
     mode: "enterprise",       // Mode: 'base', 'enterprise'
-    siteKey: '6LfCV9UhAAAAAGGxTt-7lyhy8nncerPMSn9my2z-',    // Site key for requests
+    siteKey: process.env.RECAPTCHA_SITE_KEY,    // Site key for requests
     version: 2,    // Version
-    size: "normal"        // Size: 'compact', 'normal', 'invisible' (v2)
+    size: "compact"        // Size: 'compact', 'normal', 'invisible' (v2)
   },
 
   publicRuntimeConfig: {
     recaptcha: {
       /* reCAPTCHA options */
-      siteKey: '6LfCV9UhAAAAAGGxTt-7lyhy8nncerPMSn9my2z-'// for example
+      siteKey: process.env.RECAPTCHA_SITE_KEY,// for example
     }
   },
 
