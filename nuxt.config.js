@@ -122,12 +122,8 @@ export default {
     },
     icon: {
       /* icon options */
-      source: "~/static/favicon-96x96.png"
+      source: "/favicon-96x96.png"
     }
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    publicPath: 'new-folder/',
-  },
 }
