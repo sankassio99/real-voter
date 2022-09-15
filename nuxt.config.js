@@ -122,6 +122,7 @@ export default {
     },
     icon: {
       /* icon options */
+      source: "~/static/favicon-96x96.png"
     }
   },
 
