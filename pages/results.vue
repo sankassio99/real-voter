@@ -66,7 +66,7 @@ export default {
     })
     // get candidate votes
     allDocs.forEach(async (doc) => {
-      let votesCount = await this.getCadidateVotes(doc.id)
+      let votesCount = doc.votesCount
       let multVotes = votesCount * 3
       this.totalVotes += multVotes
       values.push(multVotes)

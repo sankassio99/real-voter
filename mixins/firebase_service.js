@@ -29,6 +29,21 @@ export default {
 
       return votes
     },
+    async getCadidateWithVotes(name) {
+      let candidate = null ;
+      await this.$fire.firestore
+        .collection('candidates')
+        .doc(name)
+        .get()
+        .then((querySnapshot) => {
+          candidate = {
+            id: querySnapshot.id,
+            ...querySnapshot.data(),
+          }
+        })
+
+      return candidate
+    },
     async getAllCandidates() {
       var candidates = []
       await this.$fire.firestore
