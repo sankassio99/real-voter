@@ -31,16 +31,16 @@
         <button-zap></button-zap>
       </div>
 
-      <div class="flex flex-col gap-4">
+      <!-- <div class="flex flex-col gap-4">
         <title-lg :text="'Forum para discussão'"></title-lg>
         <div class="border rounded-sm p-2">
           <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments/realeleitor" data-width="" data-numposts="4"></div>
         </div>
-      </div>
+      </div> -->
 
-      <div>
+      <!-- <div>
         <div class="fb-share-button" data-href="https://www.realeleitor.com.br/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.realeleitor.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartilhar</a></div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -79,7 +79,7 @@ export default {
     // get candidate votes
     allDocs.forEach(async (doc) => {
       let votesCount = doc.votesCount
-      let multVotes = votesCount * 3
+      let multVotes = votesCount * 6
       this.totalVotes += multVotes
       values.push(multVotes)
     })
