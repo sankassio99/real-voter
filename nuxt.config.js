@@ -27,6 +27,9 @@ export default {
       { rel: "icon" ,type: "image/png" ,sizes: "16x16" ,href: "/favicon-16x16.png"},
       { rel: "manifest",href: "/manifest.json"},
     ],
+    script: [
+      { src: 'js/fb-sdk.js' }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

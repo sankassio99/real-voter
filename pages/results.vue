@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-xl mx-auto px-2 my-10">
+  <div class="max-w-2xl mx-auto px-2 my-10">
     <sucess-alert v-if="successVote" :text="'Seu voto foi registrado com sucesso 🎉'"></sucess-alert>
 
     <div class="flex flex-col gap-10 justify-center px-4">
@@ -30,12 +30,24 @@
         </p>
         <button-zap></button-zap>
       </div>
+
+      <div class="flex flex-col gap-4">
+        <title-lg :text="'Forum para discussão'"></title-lg>
+        <div class="border rounded-sm p-2">
+          <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments/realeleitor" data-width="" data-numposts="4"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="fb-share-button" data-href="https://www.realeleitor.com.br/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.realeleitor.com.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartilhar</a></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import BaseButton from '~/components/Atoms/BaseButton.vue'
+import TitleLg from '~/components/Atoms/TitleLg.vue'
 import VotesCount from '~/components/Atoms/votesCount.vue'
 import ButtonZap from '~/components/Molecules/buttonZap.vue'
 import headerText from '~/components/Molecules/headerText.vue'
@@ -44,7 +56,7 @@ import firebase_service from '~/mixins/firebase_service.js'
 import SucessAlert from '../components/Atoms/SuccessAlert.vue'
 
 export default {
-  components: { headerText, BaseButton, VotesCount, BarChart, ButtonZap, SucessAlert },
+  components: { headerText, BaseButton, VotesCount, BarChart, ButtonZap, SucessAlert, TitleLg },
   mixins: [firebase_service],
   data() {
     return {
@@ -95,12 +107,14 @@ export default {
     }
   },
   methods: {
-    // updateGraphc() {
-    //   this.$nextTick(() => {
-    //     // Add the component back in
-    //     this.dataIsGot = false
-    //   })
-    // },
+    fbLog() {
+      window.FB.getLoginStatus(function (response) {
+        this.statusChangeCallback(response)
+      })
+    },
+    statusChangeCallback(response) {
+      console.log(response)
+    },
   },
   head() {
     return {
