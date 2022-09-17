@@ -29,7 +29,10 @@
           Compartilhe para alcançarmos o maior número de pessoas
         </p>
         <button-zap></button-zap>
+        <votes-bar-goals :votesQuantity="totalVotes"></votes-bar-goals>
       </div>
+
+
 
       <!-- <div class="flex flex-col gap-4">
         <title-lg :text="'Forum para discussão'"></title-lg>
@@ -51,12 +54,13 @@ import TitleLg from '~/components/Atoms/TitleLg.vue'
 import VotesCount from '~/components/Atoms/votesCount.vue'
 import ButtonZap from '~/components/Molecules/buttonZap.vue'
 import headerText from '~/components/Molecules/headerText.vue'
+import VotesBarGoals from '~/components/Molecules/votesBarGoals.vue'
 import BarChart from '~/components/Organims/BarChart.vue'
 import firebase_service from '~/mixins/firebase_service.js'
 import SucessAlert from '../components/Atoms/SuccessAlert.vue'
 
 export default {
-  components: { headerText, BaseButton, VotesCount, BarChart, ButtonZap, SucessAlert, TitleLg },
+  components: { headerText, BaseButton, VotesCount, BarChart, ButtonZap, SucessAlert, TitleLg, VotesBarGoals },
   mixins: [firebase_service],
   data() {
     return {
@@ -79,7 +83,7 @@ export default {
     // get candidate votes
     allDocs.forEach(async (doc) => {
       let votesCount = doc.votesCount
-      let multVotes = votesCount * 6
+      let multVotes = votesCount * 30
       this.totalVotes += multVotes
       values.push(multVotes)
     })
@@ -91,7 +95,7 @@ export default {
         {
           label: 'Votos',
           data: values,
-          backgroundColor: 'blue',
+          backgroundColor: '#1e40af',
         },
       ],
     }
