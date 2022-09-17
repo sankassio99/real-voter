@@ -105,6 +105,12 @@ export default {
     if(res[1]){
       this.successVote = true;
     }
+
+    if (process.client && this.successVote) {
+      this.$fire.analytics.logEvent("results_after_voted", {});
+    }else if (process.client) {
+      this.$fire.analytics.logEvent("results_view", {});
+    }
   },
   methods: {
     fbLog() {
